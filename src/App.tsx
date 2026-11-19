@@ -124,6 +124,18 @@ function App() {
         body: JSON.stringify({ message: text, sessionId: sessionIdRef.current }),
       });
 
+      if (res.status === 429) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: crypto.randomUUID(),
+            role: 'bot',
+            text: 'たくさんお話ししてくださってありがとうございます。少し時間をおいてから、また話しかけてくださいね。',
+          },
+        ]);
+        return;
+      }
+
       if (!res.ok) throw new Error('Network response was not ok');
 
       const data = await res.json();
@@ -206,6 +218,7 @@ function App() {
       <div className="flex-shrink-0 bg-white/80 backdrop-blur-sm border-t border-rose-100 px-4 py-3 sm:py-4">
         <div className="max-w-2xl mx-auto flex items-end gap-2">
           <textarea
+            maxLength={1000}
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
