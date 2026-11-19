@@ -40,7 +40,7 @@ Dify / LINE Messaging API / Vercel（サーバーレス関数）/ Upstash Redis 
 1. `.env.example` をコピーして `.env.local` を作り、値を入れる
    - `LINE_CHANNEL_SECRET` / `LINE_CHANNEL_ACCESS_TOKEN`（LINE Developersで発行）
    - `DIFY_API_KEY` / `DIFY_API_BASE`（Difyのアプリで発行）
-   - `KV_REST_API_URL` / `KV_REST_API_TOKEN`（Upstash Redis）
+   - `UPSTASH_KV_REST_API_URL` / `UPSTASH_KV_REST_API_TOKEN`（Upstash Redis）
 2. `npm install`
 3. `npm run dev`（Webアプリ）、Vercelにデプロイすると `api/` も動きます
 
